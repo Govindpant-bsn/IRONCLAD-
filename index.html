@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IRONCLAD — Forge Your Strongest Self</title>
+  <meta name="description"
+    content="IRONCLAD is a strength-first training club. Elite coaching, real equipment, a community that tracks every rep. Book your free trial session today." />
+  <meta name="theme-color" content="#0A0A0B" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ============== LOADING SCREEN ============== -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__rack">
+      <span class="loader__plate"></span>
+      <span class="loader__plate"></span>
+      <span class="loader__plate"></span>
+      <span class="loader__plate"></span>
+    </div>
+    <div class="loader__label">
+      <span class="loader__count" id="loaderCount">00</span>
+      <span class="loader__text">LOADING SESSION</span>
+    </div>
+  </div>
+
+  <!-- ============== CUSTOM CURSOR ============== -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__ring"></div>
+    <div class="cursor__dot"></div>
+  </div>
+
+  <!-- ============== SCROLL PROGRESS RAIL ============== -->
+  <div class="rail" aria-hidden="true">
+    <div class="rail__track">
+      <div class="rail__fill" id="railFill"></div>
+    </div>
+  </div>
+
+  <!-- ============== SKIP LINK ============== -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============== NAVBAR ============== -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#home" class="nav__logo" aria-label="Ironclad home">
+        <span class="nav__logo-mark">⌁</span>
+        <span class="nav__logo-text">IRON<em>CLAD</em></span>
+      </a>
+
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#home" class="nav__link" data-link><span>Home</span></a>
+        <a href="#programs" class="nav__link" data-link><span>Programs</span></a>
+        <a href="#membership" class="nav__link" data-link><span>Membership</span></a>
+        <a href="#trainers" class="nav__link" data-link><span>Trainers</span></a>
+        <a href="#testimonials" class="nav__link" data-link><span>Testimonials</span></a>
+        <a href="#gallery" class="nav__link" data-link><span>Gallery</span></a>
+        <a href="#contact" class="nav__link" data-link><span>Contact</span></a>
+      </nav>
+
+      <a href="#membership" class="nav__cta">
+        <span>Join Now</span>
+      </a>
+
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============== MOBILE MENU ============== -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav aria-label="Mobile">
+      <a href="#home" data-link>Home</a>
+      <a href="#programs" data-link>Programs</a>
+      <a href="#membership" data-link>Membership</a>
+      <a href="#trainers" data-link>Trainers</a>
+      <a href="#testimonials" data-link>Testimonials</a>
+      <a href="#gallery" data-link>Gallery</a>
+      <a href="#contact" data-link>Contact</a>
+    </nav>
+    <a href="#membership" class="mobile-menu__cta" data-link>Join Now</a>
+  </div>
+
+  <main id="main">
+
+    <!-- ============== HERO ============== -->
+    <section class="hero" id="home">
+      <div class="hero__bg">
+        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1920&auto=format&fit=crop" alt=""
+          class="hero__img" />
+        <div class="hero__overlay"></div>
+        <div class="hero__grain"></div>
+      </div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow" data-reveal>
+          <span class="hero__eyebrow-dot"></span>
+          ESTABLISHED FLOOR · OPEN 24/7
+        </p>
+
+        <h1 class="hero__title">
+          <span class="hero__title-line" data-reveal>Forge Your</span>
+          <span class="hero__title-line hero__title-line--accent" data-reveal>Strongest Self</span>
+        </h1>
+
+        <p class="hero__subtitle" data-reveal>
+          Transform your body through elite coaching, cutting-edge equipment,
+          and a community that shows up before sunrise.
+        </p>
+
+        <div class="hero__actions" data-reveal>
+          <a href="#membership" class="btn btn--primary magnetic">
+            <span>Join Now</span>
+          </a>
+          <a href="#contact" class="btn btn--ghost magnetic">
+            <span>Book Free Trial</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Live PR ticker instead of static stat cards -->
+      <div class="hero__ticker" data-reveal aria-label="Club statistics">
+        <div class="ticker">
+          <div class="ticker__item">
+            <span class="ticker__num" data-count="10000" data-suffix="+">0</span>
+            <span class="ticker__label">Members Training</span>
+          </div>
+          <div class="ticker__sep" aria-hidden="true"></div>
+          <div class="ticker__item">
+            <span class="ticker__num" data-count="50" data-suffix="+">0</span>
+            <span class="ticker__label">Pro Trainers</span>
+          </div>
+          <div class="ticker__sep" aria-hidden="true"></div>
+          <div class="ticker__item">
+            <span class="ticker__num" data-count="24" data-suffix="/7">0</span>
+            <span class="ticker__label">Floor Access</span>
+          </div>
+          <div class="ticker__sep" aria-hidden="true"></div>
+          <div class="ticker__item">
+            <span class="ticker__num" data-count="100" data-suffix="+">0</span>
+            <span class="ticker__label">Machines Racked</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-cue" aria-label="Scroll to next section">
+        <span class="scroll-cue__line"></span>
+        <span class="scroll-cue__text">SCROLL</span>
+      </a>
+    </section>
+
+    <!-- ============== ABOUT ============== -->
+    <section class="about" id="about">
+      <div class="section-head">
+        <span class="section-tag">SET 01 — THE CLUB</span>
+      </div>
+
+      <div class="about__grid">
+        <div class="about__media" data-reveal>
+          <div class="about__media-frame">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200&auto=format&fit=crop"
+              alt="Athlete loading a barbell with weight plates in a dimly lit strength gym" loading="lazy" />
+          </div>
+          <div class="about__media-tag">
+            <span class="about__media-tag-num">07:00</span>
+            <span class="about__media-tag-text">Opens daily, no excuses</span>
+          </div>
+        </div>
+
+        <div class="about__copy">
+          <h2 class="about__title" data-reveal>
+            Built for people who track their progress, not their excuses.
+          </h2>
+          <p class="about__text" data-reveal>
+            IRONCLAD isn't a gym you join and forget. It's a floor where every plate,
+            every rep, every session adds up to something measurable. We built this
+            place around three things — real coaching, real equipment, and a community
+            that actually shows up.
+          </p>
+
+          <div class="about__pillars">
+            <div class="pillar" data-reveal>
+              <span class="pillar__mark">Mission</span>
+              <p>Make strength training precise, personal, and sustainable — not intimidating.</p>
+            </div>
+            <div class="pillar" data-reveal>
+              <span class="pillar__mark">Vision</span>
+              <p>A floor where beginners and competitive lifters train side by side, respected equally.</p>
+            </div>
+            <div class="pillar" data-reveal>
+              <span class="pillar__mark">Why Us</span>
+              <p>Certified coaches, programmed progression, and equipment that's never "out of order."</p>
+            </div>
+          </div>
+
+          <div class="about__stats" data-reveal>
+            <div class="about__stat">
+              <span class="about__stat-num" data-count="98" data-suffix="%">0</span>
+              <span class="about__stat-label">Member retention, year one</span>
+            </div>
+            <div class="about__stat">
+              <span class="about__stat-num" data-count="12" data-suffix="">0</span>
+              <span class="about__stat-label">Years on this floor</span>
+            </div>
+            <div class="about__stat">
+              <span class="about__stat-num" data-count="4200" data-suffix="+">0</span>
+              <span class="about__stat-label">PRs logged this year</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== PROGRAMS ============== -->
+    <section class="programs" id="programs">
+      <div class="section-head">
+        <span class="section-tag">SET 02 — PROGRAMS</span>
+        <h2 class="section-title" data-reveal>Pick your discipline.<br>We'll program the rest.</h2>
+      </div>
+
+      <div class="programs__grid">
+
+        <article class="program-card" data-reveal>
+          <div class="program-card__index">01</div>
+          <div class="program-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <path d="M10 24h28M6 24v-5M6 24v5M42 24v-5M42 24v5M14 24v-10M14 24v10M34 24v-10M34 24v10"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3>Strength Training</h3>
+          <p>Progressive overload programming built around the big compound lifts — squat, bench, deadlift, press.</p>
+          <a href="#contact" class="program-card__link">Start this track <span>→</span></a>
+        </article>
+
+        <article class="program-card" data-reveal>
+          <div class="program-card__index">02</div>
+          <div class="program-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <path d="M24 6l5 12 13 1-10 8 4 13-12-7-12 7 4-13-10-8 13-1z" stroke="currentColor" stroke-width="2.5"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3>Weight Loss</h3>
+          <p>Metabolic conditioning paired with nutrition coaching that fits your schedule, not a generic meal plan.</p>
+          <a href="#contact" class="program-card__link">Start this track <span>→</span></a>
+        </article>
+
+        <article class="program-card" data-reveal>
+          <div class="program-card__index">03</div>
+          <div class="program-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="16" r="6" stroke="currentColor" stroke-width="2.5" />
+              <path d="M14 42c0-8 4.5-13 10-13s10 5 10 13" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3>Bodybuilding</h3>
+          <p>Hypertrophy blocks, split routines, and posing feedback from coaches who've competed themselves.</p>
+          <a href="#contact" class="program-card__link">Start this track <span>→</span></a>
+        </article>
+
+        <article class="program-card" data-reveal>
+          <div class="program-card__index">04</div>
+          <div class="program-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <path d="M8 40L20 16l6 10 4-6 10 20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3>CrossFit</h3>
+          <p>High-intensity functional WODs, scaled to your level, scored and tracked every single class.</p>
+          <a href="#contact" class="program-card__link">Start this track <span>→</span></a>
+        </article>
+
+        <article class="program-card" data-reveal>
+          <div class="program-card__index">05</div>
+          <div class="program-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <path d="M24 6v36M6 24h36M12 12l24 24M36 12L12 36" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3>Functional Fitness</h3>
+          <p>Movement patterns that transfer to real life — carry, hinge, climb, crawl. Built for longevity.</p>
+          <a href="#contact" class="program-card__link">Start this track <span>→</span></a>
+        </article>
+
+        <article class="program-card" data-reveal>
+          <div class="program-card__index">06</div>
+          <div class="program-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="17" stroke="currentColor" stroke-width="2.5" />
+              <path d="M24 14v10l7 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3>Personal Coaching</h3>
+          <p>One-on-one programming, weekly check-ins, and a coach who actually answers your messages.</p>
+          <a href="#contact" class="program-card__link">Start this track <span>→</span></a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============== WHY CHOOSE US ============== -->
+    <section class="why" id="why">
+      <div class="section-head">
+        <span class="section-tag">SET 03 — THE DIFFERENCE</span>
+        <h2 class="section-title" data-reveal>What you're actually paying for.</h2>
+      </div>
+
+      <div class="why__grid">
+        <div class="why-card" data-reveal>
+          <div class="why-card__glow"></div>
+          <span class="why-card__icon">⌁</span>
+          <h3>Certified Trainers</h3>
+          <p>Every coach holds an accredited certification and a specialty — not a weekend course.</p>
+        </div>
+        <div class="why-card" data-reveal>
+          <div class="why-card__glow"></div>
+          <span class="why-card__icon">◬</span>
+          <h3>Nutrition Plans</h3>
+          <p>Macro coaching built around your training block, adjusted as your body changes.</p>
+        </div>
+        <div class="why-card" data-reveal>
+          <div class="why-card__glow"></div>
+          <span class="why-card__icon">⌬</span>
+          <h3>Latest Equipment</h3>
+          <p>Plate-loaded machines, calibrated bars, and a maintenance schedule we actually follow.</p>
+        </div>
+        <div class="why-card" data-reveal>
+          <div class="why-card__glow"></div>
+          <span class="why-card__icon">◷</span>
+          <h3>24/7 Access</h3>
+          <p>Badge in at 4am or midnight. The floor doesn't close because the desk does.</p>
+        </div>
+        <div class="why-card" data-reveal>
+          <div class="why-card__glow"></div>
+          <span class="why-card__icon">⌖</span>
+          <h3>Community Events</h3>
+          <p>Monthly lifting meets, charity WODs, and a Discord that's busier than most group chats.</p>
+        </div>
+        <div class="why-card" data-reveal>
+          <div class="why-card__glow"></div>
+          <span class="why-card__icon">◈</span>
+          <h3>Affordable Membership</h3>
+          <p>No joining fee theatrics. The price on the page is the price you pay.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== TRAINERS ============== -->
+    <section class="trainers" id="trainers">
+      <div class="section-head">
+        <span class="section-tag">SET 04 — YOUR COACHES</span>
+        <h2 class="section-title" data-reveal>The people who'll get you there.</h2>
+      </div>
+
+      <div class="trainers__grid">
+
+        <article class="trainer-card" data-reveal>
+          <div class="trainer-card__photo">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800&auto=format&fit=crop"
+              alt="Coach Mara Voss, strength and powerlifting trainer" loading="lazy" />
+            <div class="trainer-card__social">
+              <a href="#" aria-label="Mara Voss on Instagram">IG</a>
+              <a href="#" aria-label="Mara Voss on LinkedIn">LI</a>
+            </div>
+          </div>
+          <h3>Mara Voss</h3>
+          <span class="trainer-card__role">Strength &amp; Powerlifting</span>
+          <p>Former national-level powerlifter. Coaches the 5am barbell block like it's a competition floor.</p>
+        </article>
+
+        <article class="trainer-card" data-reveal>
+          <div class="trainer-card__photo">
+            <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?q=80&w=800&auto=format&fit=crop"
+              alt="Coach Devon Ray, conditioning and CrossFit trainer" loading="lazy" />
+            <div class="trainer-card__social">
+              <a href="#" aria-label="Devon Ray on Instagram">IG</a>
+              <a href="#" aria-label="Devon Ray on LinkedIn">LI</a>
+            </div>
+          </div>
+          <h3>Devon Ray</h3>
+          <span class="trainer-card__role">Conditioning &amp; CrossFit</span>
+          <p>Runs the WOD board. Will absolutely make you question your cardio, kindly.</p>
+        </article>
+
+        <article class="trainer-card" data-reveal>
+          <div class="trainer-card__photo">
+            <img src="https://images.unsplash.com/photo-1517344884509-a0c97ec11bcc?q=80&w=800&auto=format&fit=crop"
+              alt="Coach Talia Brooks, bodybuilding and physique trainer" loading="lazy" />
+            <div class="trainer-card__social">
+              <a href="#" aria-label="Talia Brooks on Instagram">IG</a>
+              <a href="#" aria-label="Talia Brooks on LinkedIn">LI</a>
+            </div>
+          </div>
+          <h3>Talia Brooks</h3>
+          <span class="trainer-card__role">Bodybuilding &amp; Physique</span>
+          <p>Competitive bikini athlete turned coach. Programs hypertrophy blocks with surgical precision.</p>
+        </article>
+
+        <article class="trainer-card" data-reveal>
+          <div class="trainer-card__photo">
+            <img src="https://images.unsplash.com/photo-1500468756762-a401b6f17b46?q=80&w=800&auto=format&fit=crop"
+              alt="Coach Idris Cole, functional fitness trainer" loading="lazy" />
+            <div class="trainer-card__social">
+              <a href="#" aria-label="Idris Cole on Instagram">IG</a>
+              <a href="#" aria-label="Idris Cole on LinkedIn">LI</a>
+            </div>
+          </div>
+          <h3>Idris Cole</h3>
+          <span class="trainer-card__role">Functional &amp; Mobility</span>
+          <p>Physio background. Keeps the over-40 lifters training pain-free and PR-ing anyway.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============== TRANSFORMATIONS ============== -->
+    <section class="transform" id="transformations">
+      <div class="section-head">
+        <span class="section-tag">SET 05 — RESULTS</span>
+        <h2 class="section-title" data-reveal>Logged, not staged.</h2>
+      </div>
+
+      <div class="transform__slider" data-reveal>
+        <div class="transform__compare" id="compareSlider">
+          <img class="transform__after"
+            src="https://images.unsplash.com/photo-1571388208497-71bedc66e932?q=80&w=1200&auto=format&fit=crop"
+            alt="Member after 6 months of training, visibly leaner and more muscular" loading="lazy" />
+          <div class="transform__before-wrap" id="beforeWrap">
+            <img class="transform__before"
+              src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?q=80&w=1200&auto=format&fit=crop"
+              alt="Member before starting training program" loading="lazy" />
+          </div>
+          <div class="transform__handle" id="compareHandle">
+            <span>↔</span>
+          </div>
+          <span class="transform__badge transform__badge--before">BEFORE</span>
+          <span class="transform__badge transform__badge--after">AFTER · 24 WEEKS</span>
+        </div>
+
+        <div class="transform__stats">
+          <div class="transform__stat">
+            <span class="transform__stat-num" data-count="18" data-suffix=" kg">0</span>
+            <span class="transform__stat-label">Lost in 24 weeks</span>
+          </div>
+          <div class="transform__stat">
+            <span class="transform__stat-num" data-count="40" data-suffix=" kg">0</span>
+            <span class="transform__stat-label">Added to deadlift</span>
+          </div>
+          <div class="transform__stat">
+            <span class="transform__stat-num" data-count="6" data-suffix=" mo">0</span>
+            <span class="transform__stat-label">Coaching program</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== MEMBERSHIP ============== -->
+    <section class="membership" id="membership">
+      <div class="section-head">
+        <span class="section-tag">SET 06 — MEMBERSHIP</span>
+        <h2 class="section-title" data-reveal>Three plans. No fine print.</h2>
+      </div>
+
+      <div class="membership__grid">
+
+        <article class="plan-card" data-reveal>
+          <h3 class="plan-card__name">Starter</h3>
+          <p class="plan-card__desc">For people building the habit.</p>
+          <div class="plan-card__price"><span>$39</span>/mo</div>
+          <ul class="plan-card__features">
+            <li>Full floor access, 6am–11pm</li>
+            <li>Standard equipment &amp; free weights</li>
+            <li>2 group classes / week</li>
+            <li>Mobile app tracking</li>
+          </ul>
+          <a href="#contact" class="btn btn--ghost-full magnetic">Choose Starter</a>
+        </article>
+
+        <article class="plan-card plan-card--popular" data-reveal>
+          <span class="plan-card__badge">Most Popular</span>
+          <h3 class="plan-card__name">Pro</h3>
+          <p class="plan-card__desc">For people who train with intent.</p>
+          <div class="plan-card__price"><span>$79</span>/mo</div>
+          <ul class="plan-card__features">
+            <li>24/7 badge access</li>
+            <li>Unlimited group classes</li>
+            <li>Monthly coaching check-in</li>
+            <li>Nutrition plan template</li>
+            <li>Guest pass ×2 / month</li>
+          </ul>
+          <a href="#contact" class="btn btn--primary-full magnetic">Choose Pro</a>
+        </article>
+
+        <article class="plan-card" data-reveal>
+          <h3 class="plan-card__name">Elite</h3>
+          <p class="plan-card__desc">For people chasing a number.</p>
+          <div class="plan-card__price"><span>$149</span>/mo</div>
+          <ul class="plan-card__features">
+            <li>Everything in Pro</li>
+            <li>Weekly 1:1 coaching session</li>
+            <li>Custom programming block</li>
+            <li>Priority class booking</li>
+            <li>Recovery suite access</li>
+          </ul>
+          <a href="#contact" class="btn btn--ghost-full magnetic">Choose Elite</a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============== TESTIMONIALS ============== -->
+    <section class="testimonials" id="testimonials">
+      <div class="section-head">
+        <span class="section-tag">SET 07 — FROM THE FLOOR</span>
+        <h2 class="section-title" data-reveal>Don't take our word for it.</h2>
+      </div>
+
+      <div class="testi" data-reveal>
+        <div class="testi__track" id="testiTrack">
+
+          <article class="testi-card">
+            <div class="testi-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>"I came in for weight loss and left with a 100kg deadlift. The coaches actually program around your life,
+              not against it."</p>
+            <div class="testi-card__author">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop"
+                alt="" loading="lazy" />
+              <div>
+                <span class="testi-card__name">Renata Suh</span>
+                <span class="testi-card__since">Member since 2023</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testi-card">
+            <div class="testi-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>"24/7 access changed my life as a shift worker. I lift at 3am sometimes and the floor's never dead —
+              there's always someone grinding."</p>
+            <div class="testi-card__author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop"
+                alt="" loading="lazy" />
+              <div>
+                <span class="testi-card__name">Marcus Idé</span>
+                <span class="testi-card__since">Member since 2021</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testi-card">
+            <div class="testi-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>"Switched from a chain gym. The difference is the coaching — Talia rebuilt my whole split and I've grown
+              more in 4 months than 2 years prior."</p>
+            <div class="testi-card__author">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop"
+                alt="" loading="lazy" />
+              <div>
+                <span class="testi-card__name">Priya Nandakumar</span>
+                <span class="testi-card__since">Member since 2024</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testi-card">
+            <div class="testi-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>"Joined Elite for the 1:1 sessions. Closed a 200kg deadlift this year. Worth every cent of the program."
+            </p>
+            <div class="testi-card__author">
+              <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=200&auto=format&fit=crop"
+                alt="" loading="lazy" />
+              <div>
+                <span class="testi-card__name">Jonah Pratt</span>
+                <span class="testi-card__since">Member since 2022</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="testi__dots" id="testiDots" role="tablist" aria-label="Testimonial navigation"></div>
+      </div>
+    </section>
+
+    <!-- ============== GALLERY ============== -->
+    <section class="gallery" id="gallery">
+      <div class="section-head">
+        <span class="section-tag">SET 08 — THE FLOOR</span>
+        <h2 class="section-title" data-reveal>See where the work happens.</h2>
+      </div>
+
+      <div class="gallery__grid" id="galleryGrid">
+        <button class="gallery__item gallery__item--tall" data-reveal
+          data-full="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1600&auto=format&fit=crop">
+          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800&auto=format&fit=crop"
+            alt="Lifter mid-deadlift on the main floor" loading="lazy" />
+        </button>
+        <button class="gallery__item" data-reveal
+          data-full="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=1600&auto=format&fit=crop">
+          <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=800&auto=format&fit=crop"
+            alt="Rack of weight plates and barbells" loading="lazy" />
+        </button>
+        <button class="gallery__item gallery__item--wide" data-reveal
+          data-full="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=1600&auto=format&fit=crop">
+          <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=800&auto=format&fit=crop"
+            alt="Group conditioning class mid-workout" loading="lazy" />
+        </button>
+        <button class="gallery__item" data-reveal
+          data-full="https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?q=80&w=1600&auto=format&fit=crop">
+          <img src="https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?q=80&w=800&auto=format&fit=crop"
+            alt="Close-up of chalked hands gripping a barbell" loading="lazy" />
+        </button>
+        <button class="gallery__item gallery__item--tall" data-reveal
+          data-full="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?q=80&w=1600&auto=format&fit=crop">
+          <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?q=80&w=800&auto=format&fit=crop"
+            alt="Trainer spotting a member on bench press" loading="lazy" />
+        </button>
+        <button class="gallery__item" data-reveal
+          data-full="https://images.unsplash.com/photo-1546483875-ad9014c88eba?q=80&w=1600&auto=format&fit=crop">
+          <img src="https://images.unsplash.com/photo-1546483875-ad9014c88eba?q=80&w=800&auto=format&fit=crop"
+            alt="Rows of kettlebells organized by weight" loading="lazy" />
+        </button>
+      </div>
+
+      <!-- Lightbox -->
+      <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image preview">
+        <button class="lightbox__close" id="lightboxClose" aria-label="Close preview">✕</button>
+        <img src="" alt="" id="lightboxImg" />
+      </div>
+    </section>
+
+    <!-- ============== FAQ ============== -->
+    <section class="faq" id="faq">
+      <div class="section-head">
+        <span class="section-tag">SET 09 — QUESTIONS</span>
+        <h2 class="section-title" data-reveal>Before you ask the desk.</h2>
+      </div>
+
+      <div class="faq__list" data-reveal>
+
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">
+            <span>Do I need to be experienced to join?</span>
+            <span class="faq-item__icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            <p>No. Every membership includes a starting assessment with a coach who builds your first program around
+              your actual level — not a generic beginner template.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">
+            <span>Can I freeze or cancel my membership?</span>
+            <span class="faq-item__icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            <p>Yes. Freeze for travel or injury at no cost, or cancel any time with 14 days' notice. No long-term
+              lock-in contracts, ever.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">
+            <span>What's included in the free trial?</span>
+            <span class="faq-item__icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            <p>One full day of floor access, a 30-minute consult with a coach, and a guided walkthrough of the equipment
+              you'll actually use.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">
+            <span>Is there a joining fee?</span>
+            <span class="faq-item__icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            <p>No joining fee on any plan. The monthly price listed is the full price — no setup charges, no annual
+              "maintenance" fee.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">
+            <span>Do you offer nutrition coaching separately?</span>
+            <span class="faq-item__icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            <p>Yes, available as an add-on for Starter members, and included in Pro and Elite plans at no extra cost.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============== CONTACT ============== -->
+    <section class="contact" id="contact">
+      <div class="section-head">
+        <span class="section-tag">SET 10 — GET STARTED</span>
+        <h2 class="section-title" data-reveal>Your first session is on us.</h2>
+      </div>
+
+      <div class="contact__grid">
+
+        <form class="contact__form" data-reveal novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <input type="text" id="cName" name="name" required placeholder=" " />
+              <label for="cName">Full name</label>
+            </div>
+            <div class="form-field">
+              <input type="email" id="cEmail" name="email" required placeholder=" " />
+              <label for="cEmail">Email address</label>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <input type="tel" id="cPhone" name="phone" placeholder=" " />
+              <label for="cPhone">Phone number</label>
+            </div>
+            <div class="form-field">
+              <select id="cProgram" name="program" required>
+                <option value="" disabled selected hidden> </option>
+                <option>Strength Training</option>
+                <option>Weight Loss</option>
+                <option>Bodybuilding</option>
+                <option>CrossFit</option>
+                <option>Functional Fitness</option>
+                <option>Personal Coaching</option>
+              </select>
+              <label for="cProgram">Program of interest</label>
+            </div>
+          </div>
+          <div class="form-field">
+            <textarea id="cMessage" name="message" rows="4" placeholder=" "></textarea>
+            <label for="cMessage">Tell us your goal</label>
+          </div>
+          <button type="submit" class="btn btn--primary-full magnetic">
+            <span class="btn__label">Book Free Trial</span>
+            <span class="btn__loading" aria-hidden="true"></span>
+          </button>
+        </form>
+
+        <div class="contact__info">
+          <div class="contact__map" role="img" aria-label="Map placeholder showing club location">
+            <div class="contact__map-pin">
+              <span></span>
+            </div>
+            <div class="contact__map-grid"></div>
+          </div>
+
+          <ul class="contact__details">
+            <li>
+              <span class="contact__details-label">Address</span>
+              <span>118 Forge Street, Industrial District</span>
+            </li>
+            <li>
+              <span class="contact__details-label">Phone</span>
+              <a href="tel:+10000000000">+1 (000) 000-0000</a>
+            </li>
+            <li>
+              <span class="contact__details-label">Email</span>
+              <a href="mailto:train@ironclad.gym">train@ironclad.gym</a>
+            </li>
+            <li>
+              <span class="contact__details-label">Hours</span>
+              <span>Open 24/7 — front desk staffed 6am–10pm</span>
+            </li>
+          </ul>
+
+          <div class="contact__social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="TikTok">TT</a>
+            <a href="#" aria-label="YouTube">YT</a>
+            <a href="#" aria-label="Strava">ST</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <span class="nav__logo-text footer__logo">IRON<em>CLAD</em></span>
+        <p>A strength-first training club. Built for people who track every rep.</p>
+      </div>
+
+      <div class="footer__newsletter">
+        <h3>Get the weekly program drop.</h3>
+        <form class="footer__form" novalidate>
+          <input type="email" placeholder="Your email" aria-label="Email for newsletter" required />
+          <button type="submit" class="magnetic" aria-label="Subscribe">→</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer__links">
+      <div class="footer__col">
+        <h4>Club</h4>
+        <a href="#about" data-link>About</a>
+        <a href="#programs" data-link>Programs</a>
+        <a href="#trainers" data-link>Trainers</a>
+        <a href="#membership" data-link>Membership</a>
+      </div>
+      <div class="footer__col">
+        <h4>Resources</h4>
+        <a href="#testimonials" data-link>Testimonials</a>
+        <a href="#gallery" data-link>Gallery</a>
+        <a href="#faq" data-link>FAQ</a>
+        <a href="#contact" data-link>Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>Follow</h4>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2026 IRONCLAD Training Club. All rights reserved.</span>
+      <span>Built on this floor, for this floor.</span>
+    </div>
+  </footer>
+
+  <!-- ============== BACK TO TOP ============== -->
+  <button class="to-top magnetic" id="toTop" aria-label="Back to top">
+    <span>↑</span>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
