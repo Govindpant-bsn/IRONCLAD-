@@ -3,6 +3,20 @@
    Vanilla JS only. Organized by feature, each self-contained.
 =================================================================== */
 
+/* ---------------------------------------------------------------
+   Mobile viewport height fix (iOS Safari address-bar resize)
+   Feeds a --vh custom property that .hero uses as a fallback for
+   browsers that don't yet support 100dvh.
+--------------------------------------------------------------- */
+(function initViewportHeightFix() {
+  function setVH() {
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+  }
+  setVH();
+  window.addEventListener('resize', setVH);
+  window.addEventListener('orientationchange', setVH);
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   initLoader();
   initCursor();
@@ -133,6 +147,15 @@ function initMobileMenu() {
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') close();
+  });
+
+  // If a tablet is rotated (or resized) past the desktop nav breakpoint
+  // while the mobile menu is open, close it so it doesn't stay stuck
+  // over the now-visible desktop nav links.
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1000 && menu.classList.contains('is-open')) {
+      close();
+    }
   });
 }
 
@@ -334,6 +357,29 @@ function initTestimonialCarousel() {
   track.parentElement.addEventListener('mouseenter', stopAuto);
   track.parentElement.addEventListener('mouseleave', startAuto);
 
+  // Touch swipe support — desktop only has mouseenter/leave to pause,
+  // touch devices need their own gesture handling
+  const wrap = track.parentElement;
+  let touchStartX = 0;
+  let touchDeltaX = 0;
+
+  wrap.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchDeltaX = 0;
+    stopAuto();
+  }, { passive: true });
+
+  wrap.addEventListener('touchmove', (e) => {
+    touchDeltaX = e.touches[0].clientX - touchStartX;
+  }, { passive: true });
+
+  wrap.addEventListener('touchend', () => {
+    if (Math.abs(touchDeltaX) > 40) {
+      goTo(touchDeltaX < 0 ? index + 1 : index - 1);
+    }
+    startAuto();
+  });
+
   startAuto();
 }
 
@@ -362,6 +408,16 @@ function initFAQAccordion() {
       btn.setAttribute('aria-expanded', String(!isOpen));
       answer.style.maxHeight = isOpen ? '0px' : answer.scrollHeight + 'px';
     });
+  });
+
+  // Rotating the phone reflows text and changes scrollHeight; without
+  // this the open answer's fixed max-height would clip the new layout
+  window.addEventListener('resize', () => {
+    const openBtn = document.querySelector('.faq-item__q[aria-expanded="true"]');
+    if (openBtn) {
+      const openAnswer = openBtn.closest('.faq-item').querySelector('.faq-item__a');
+      openAnswer.style.maxHeight = openAnswer.scrollHeight + 'px';
+    }
   });
 }
 

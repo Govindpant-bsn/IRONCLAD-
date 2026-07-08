@@ -404,12 +404,16 @@ section {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 700;
-  padding: 1.5rem var(--space-md);
+  padding-top: max(1.5rem, calc(env(safe-area-inset-top) + 0.75rem));
+  padding-bottom: 1.5rem;
+  padding-left: max(var(--space-md), calc(env(safe-area-inset-left) + var(--space-sm)));
+  padding-right: max(var(--space-md), calc(env(safe-area-inset-right) + var(--space-sm)));
   transition: padding 0.4s var(--ease-out), background 0.4s var(--ease-out), backdrop-filter 0.4s var(--ease-out), border-color 0.4s;
   border-bottom: 1px solid transparent;
 }
 .nav.is-scrolled {
-  padding: 0.9rem var(--space-md);
+  padding-top: max(0.9rem, calc(env(safe-area-inset-top) + 0.5rem));
+  padding-bottom: 0.9rem;
   background: rgba(10,10,11,0.6);
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
@@ -486,12 +490,20 @@ section {
   color: #fff;
 }
 .nav__burger {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
   width: 32px;
   height: 32px;
+}
+/* Invisible hit-slop so the tap target meets the ~44px minimum
+   without changing the visible icon size */
+.nav__burger::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
 }
 @media (min-width: 1000px) {
   .nav__burger { display: none; }
@@ -519,10 +531,25 @@ section {
   align-items: center;
   justify-content: center;
   gap: var(--space-md);
+  padding: max(2rem, calc(env(safe-area-inset-top) + 1.5rem)) 1.5rem max(2rem, calc(env(safe-area-inset-bottom) + 1.5rem));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   transform: translateY(-100%);
   transition: transform 0.5s var(--ease-in-out);
 }
 .mobile-menu.is-open { transform: translateY(0); }
+/* Short viewports (landscape phones): top-align and shrink so every link
+   and the CTA stay reachable instead of being clipped off-screen */
+@media (max-height: 640px) {
+  .mobile-menu {
+    justify-content: flex-start;
+    padding-top: max(5.5rem, calc(env(safe-area-inset-top) + 4.5rem));
+    gap: var(--space-sm);
+  }
+  .mobile-menu nav { gap: 0.45rem; }
+  .mobile-menu nav a { font-size: 1.3rem; }
+  .mobile-menu__cta { margin-top: 0.4rem; padding: 0.75rem 1.8rem; }
+}
 .mobile-menu nav {
   display: flex;
   flex-direction: column;
@@ -550,6 +577,9 @@ section {
 .hero {
   position: relative;
   min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+  min-height: 100svh;
+  min-height: 100dvh;
   max-width: 100%;
   display: flex;
   flex-direction: column;
@@ -1042,6 +1072,14 @@ section {
   opacity: 1;
   transform: translateY(0);
 }
+/* Hover never fires on touch devices, so these links would otherwise
+   be permanently invisible and unreachable on mobile */
+@media (hover: none) {
+  .trainer-card__social {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .trainer-card__social a {
   width: 30px;
   height: 30px;
@@ -1096,6 +1134,7 @@ section {
   border: 1px solid var(--c-steel-soft);
   user-select: none;
   -webkit-user-select: none;
+  touch-action: none;
   cursor: ew-resize;
 }
 .transform__after, .transform__before {
@@ -1313,11 +1352,22 @@ section {
   margin-top: var(--space-md);
 }
 .testi__dots button {
+  position: relative;
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: var(--c-steel);
   transition: background 0.3s, transform 0.3s;
+}
+/* Enlarge tap target + spacing on touch devices only; desktop dots
+   keep their original tight spacing */
+@media (hover: none), (pointer: coarse) {
+  .testi__dots { gap: 1.1rem; }
+  .testi__dots button::before {
+    content: '';
+    position: absolute;
+    inset: -13px;
+  }
 }
 .testi__dots button.is-active {
   background: var(--c-red);
@@ -1388,6 +1438,7 @@ section {
 .lightbox img {
   max-width: 100%;
   max-height: 85vh;
+  max-height: 85dvh;
   border-radius: var(--radius-md);
   transform: scale(0.9);
   transition: transform 0.4s var(--ease-out);
@@ -1601,6 +1652,7 @@ section {
   gap: 0.7rem;
 }
 .contact__social a {
+  position: relative;
   width: 38px;
   height: 38px;
   display: flex;
@@ -1611,6 +1663,13 @@ section {
   font-size: 0.7rem;
   font-weight: 700;
   transition: border-color 0.3s, color 0.3s;
+}
+@media (hover: none), (pointer: coarse) {
+  .contact__social a::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+  }
 }
 .contact__social a:hover {
   border-color: var(--c-red);
@@ -1664,6 +1723,15 @@ section {
   transition: transform 0.3s var(--ease-out);
 }
 .footer__form button:hover { transform: translateX(4px); }
+@media (hover: none), (pointer: coarse) {
+  .footer__form button {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
 .footer__links {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1708,8 +1776,8 @@ section {
 =================================================================== */
 .to-top {
   position: fixed;
-  bottom: var(--space-md);
-  right: var(--space-md);
+  bottom: max(var(--space-md), calc(env(safe-area-inset-bottom) + var(--space-sm)));
+  right: max(var(--space-md), calc(env(safe-area-inset-right) + var(--space-sm)));
   z-index: 600;
   width: 50px;
   height: 50px;
